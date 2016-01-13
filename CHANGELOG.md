@@ -2,6 +2,12 @@
 
 Issues are tracked in AppGyver's [unified issue tracker](https://github.com/appgyver/steroids/issues) – please post bug reports and feature requests there.
 
+## 1.9.7 (2016-01-13)
+
+Fixes:
+
+- A typo in the `superify` debug logging mechanism breaking when encountering a stream error ([see pull request #115](https://github.com/AppGyver/supersonic/pull/115))
+
 ## 1.9.6 (2016-01-13)
 
 Fixes:
