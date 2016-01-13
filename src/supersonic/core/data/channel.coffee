@@ -4,6 +4,12 @@ generateUUID = require '../../util/generate-uuid'
 
 module.exports = (window) ->
 
+  getPostMessageStream = ->
+    try
+      Bacon.fromEventTarget(window, "message")
+    catch e
+      Bacon.never()
+
   outboundBus = (channelName, sender) ->
     bus = new Bacon.Bus
 
@@ -18,7 +24,7 @@ module.exports = (window) ->
     bus
 
   inboundStream = (channelName, receiver) ->
-    Bacon.fromEventTarget(window, "message")
+    getPostMessageStream()
       .filter((event) ->
         (event.data.channel is channelName) and !deepEqual(event.data.sender, receiver)
       )
