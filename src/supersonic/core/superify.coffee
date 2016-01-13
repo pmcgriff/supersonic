@@ -55,7 +55,7 @@ module.exports = (namespace, logger) ->
       .mapError((error) ->
         # Debuggify stream error
         logger.error "#{namespace}.#{name} produced an error: #{error}"
-        new Bacon.Error err
+        new Bacon.Error error
       )
 
     # Callbackify stream value
