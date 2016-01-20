@@ -1,6 +1,6 @@
 {
   "name": "supersonic",
-  "version": "1.9.7",
+  "version": "1.9.8",
   "description": "supersonic bower library",
   "main": "lib/supersonic.js",
   "scripts": {
