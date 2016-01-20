@@ -2,6 +2,12 @@
 
 Issues are tracked in AppGyver's [unified issue tracker](https://github.com/appgyver/steroids/issues) – please post bug reports and feature requests there.
 
+## 1.9.8 (2016-01-20)
+
+Fixes:
+
+- Sporadic console errors with `querySelectorAll` being used without a valid `document.body`
+
 ## 1.9.7 (2016-01-13)
 
 Fixes:
