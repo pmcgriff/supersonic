@@ -205,7 +205,7 @@ module.exports = (window, superglobal) ->
   ###
 
   findAll = (selector = IFRAME_SELECTOR) ->
-    Array.prototype.slice.call window.document.body.querySelectorAll(selector)
+    Array.prototype.slice.call (window.document?.body?.querySelectorAll?(selector) || [])
 
   register = (element) ->
     return unless isValidFrame element
