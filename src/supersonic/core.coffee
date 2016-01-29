@@ -38,8 +38,8 @@ module.exports = {
   logger
   env
   ui
-  data: without ['users', 'session'], data
-  auth: pick ['users', 'session'], data
+  data: without ['users', 'groups', 'session'], data
+  auth: pick ['users', 'groups', 'session'], data
   debug: require('./core/debug')(steroids, logger)
   app: require('./core/app')(steroids, logger)
   media: require('./core/media')(steroids, logger)

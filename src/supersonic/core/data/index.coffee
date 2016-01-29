@@ -15,12 +15,14 @@ module.exports = (logger, superglobal, env) ->
   loadResourceBundle = require('./model/load-resource-bundle')(logger, session, defaultAsyncStorageAdapter)
   model = require('./model')(logger, superglobal, env, loadResourceBundle)
   users = require('./users')(env, session, loadResourceBundle)
+  groups = require('./groups')(env, session, loadResourceBundle)
 
   {
     channel
     model
     session
     users
+    groups
     storage: { adapters, property }
     requests: data.requests
   }
