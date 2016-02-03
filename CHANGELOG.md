@@ -2,6 +2,12 @@
 
 Issues are tracked in AppGyver's [unified issue tracker](https://github.com/appgyver/steroids/issues) – please post bug reports and feature requests there.
 
+## 1.9.9 (2016-02-03)
+
+Features:
+
+- `supersonic.auth.groups` provides accessors to the groups of the current Composer 2 application
+
 ## 1.9.8 (2016-01-20)
 
 Fixes:
