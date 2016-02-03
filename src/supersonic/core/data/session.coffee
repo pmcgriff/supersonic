@@ -1,3 +1,5 @@
+debug = require('debug')('supersonic:auth:session')
+
 module.exports = (localStorage) ->
   new class Session
 
@@ -6,12 +8,14 @@ module.exports = (localStorage) ->
 
     set: (rawSession) =>
       validateSession rawSession
+      debug "Setting session data", rawSession
       @storage.setItem @RAW_SESSION_KEY, rawSession
 
     get: =>
       @storage.getItem @RAW_SESSION_KEY
 
     clear: =>
+      debug "Clearing session data", rawSession
       @storage.removeItem @RAW_SESSION_KEY
 
     getAccessToken: =>
