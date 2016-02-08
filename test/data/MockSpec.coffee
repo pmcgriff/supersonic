@@ -6,12 +6,12 @@ expect = chai.expect
 Promise = require 'bluebird'
 Bacon = require 'baconjs'
 
-steroids = require '../src/supersonic/mock/steroids'
-Window = require '../src/supersonic/mock/window'
-logger = require('../src/supersonic/core/logger')(steroids, new Window())
+steroids = require '../../src/supersonic/mock/steroids'
+Window = require '../../src/supersonic/mock/window'
+logger = require('../../src/supersonic/core/logger')(steroids, new Window())
 
-asyncStorageAdapter = require('../src/supersonic/core/data/storage/adapters')(new Window).memory
-syncStorageAdapter = require('../src/supersonic/mock/localStorage')
+asyncStorageAdapter = require('../../src/supersonic/core/data/storage/adapters')(new Window).memory
+syncStorageAdapter = require('../../src/supersonic/mock/localStorage')
 
 data = (resourceBundle = null) ->
   window = new Window()
@@ -19,11 +19,11 @@ data = (resourceBundle = null) ->
     data: resourceBundle
   }
 
-  session = require('../src/supersonic/core/data/session')(syncStorageAdapter())
-  loadResourceBundle = require('../src/supersonic/core/data/model/load-resource-bundle')(logger, session, asyncStorageAdapter)
+  session = require('../../src/supersonic/core/data/session')(syncStorageAdapter())
+  loadResourceBundle = require('../../src/supersonic/core/data/model/load-resource-bundle')(logger, session, asyncStorageAdapter)
   env = {}
 
-  model = require('../src/supersonic/core/data/model')(
+  model = require('../../src/supersonic/core/data/model')(
     logger
     window
     env

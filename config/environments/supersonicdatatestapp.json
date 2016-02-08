@@ -1,0 +1,555 @@
+{
+  "app": {
+    "id": 106476,
+    "demo": true,
+    "tokens": {
+      "steroids": "c3407131632f7e969c8cb050e8357c2c8eb0d4c0c9e96c00e1ad6337b4fbd640",
+      "data": "a340e89b27f39b1197a5d2377734e785",
+      "segment": "P4ODgva7j5LxMAtgUVRZNyQJLZdVUNhk",
+      "segmentOwnerId": 1
+    },
+    "auth": {
+      "primary": "appgyver"
+    },
+    "design": {
+      "logoUrl": "https://ws-frontend.appgyver.com/workspace.png"
+    }
+  },
+  "endpoints": {
+    "auth": "https://rest-auth.appgyver.com/api/v4",
+    "data": "https://proxy-api.appgyver.com/v3/"
+  },
+  "auth": {
+    "endpoint": "https://rest-auth.appgyver.com/api/v4"
+  },
+  "data": {
+    "endpoint": "https://proxy-api.appgyver.com/v3/",
+    "bundle": {
+      "options": {
+        "baseUrl": "https://proxy-api.appgyver.com/v3/",
+        "headers": {
+          "steroidsAppId": "106476",
+          "steroidsApiKey": "c3407131632f7e969c8cb050e8357c2c8eb0d4c0c9e96c00e1ad6337b4fbd640",
+          "RestAuthorization": "a340e89b27f39b1197a5d2377734e785"
+        }
+      },
+      "resources": {
+        "TestResource": {
+          "name": "TestResource",
+          "title": {
+            "plural": "TestResources",
+            "singular": "TestResource"
+          },
+          "description": null,
+          "uid": "data.TestResource",
+          "listField": "Text",
+          "titleField": "Text",
+          "sortFields": [
+            {
+              "key": "Text",
+              "title": "Text"
+            },
+            {
+              "key": "Long_text",
+              "title": "Long text"
+            },
+            {
+              "key": "Date",
+              "title": "Date"
+            },
+            {
+              "key": "Relationship_onetoone",
+              "title": "Relationship (one-to-one)"
+            },
+            {
+              "key": "Multi_relation_onetomany",
+              "title": "Multi relation (one-to-many)"
+            },
+            {
+              "key": "User",
+              "title": "User"
+            },
+            {
+              "key": "Number",
+              "title": "Number"
+            },
+            {
+              "key": "Link",
+              "title": "Link"
+            },
+            {
+              "key": "Image",
+              "title": "Image"
+            },
+            {
+              "key": "Money",
+              "title": "Money"
+            },
+            {
+              "key": "Progress",
+              "title": "Progress"
+            },
+            {
+              "key": "File",
+              "title": "File"
+            },
+            {
+              "key": "Status",
+              "title": "Status"
+            },
+            {
+              "key": "Phone_number",
+              "title": "Phone number"
+            },
+            {
+              "key": "Email",
+              "title": "Email"
+            }
+          ],
+          "filterFields": [
+            {
+              "key": "appgyver_owner_id",
+              "title": "Owner",
+              "options": [
+                {
+                  "name": "demo",
+                  "id": 31024
+                }
+              ]
+            }
+          ],
+          "created_by": "user",
+          "schema": {
+            "identifier": "id",
+            "fields": {
+              "Text": {
+                "type": "string",
+                "key": "Text",
+                "field_type": "string",
+                "label": "Text",
+                "display_type": "string",
+                "metadata": null,
+                "position": 0
+              },
+              "Long_text": {
+                "type": "text",
+                "key": "Long_text",
+                "field_type": "text",
+                "label": "Long text",
+                "display_type": "text",
+                "metadata": null,
+                "position": 4194304
+              },
+              "Date": {
+                "type": "string",
+                "key": "Date",
+                "field_type": "string",
+                "label": "Date",
+                "display_type": "date",
+                "metadata": {
+                  "format": "DD-MM-YYYY"
+                },
+                "position": 6291456
+              },
+              "Relationship_onetoone": {
+                "type": "string",
+                "key": "Relationship_onetoone",
+                "field_type": "string",
+                "label": "Relationship (one-to-one)",
+                "display_type": "relation",
+                "metadata": {
+                  "collection": "TestResource",
+                  "collection_field": "Text"
+                },
+                "position": 7340032
+              },
+              "Multi_relation_onetomany": {
+                "type": "string",
+                "key": "Multi_relation_onetomany",
+                "field_type": "string",
+                "label": "Multi relation (one-to-many)",
+                "display_type": "multirelation",
+                "metadata": {
+                  "collection": "TestResource",
+                  "collection_field": "Text"
+                },
+                "position": 7864320
+              },
+              "User": {
+                "type": "string",
+                "key": "User",
+                "field_type": "string",
+                "label": "User",
+                "display_type": "user",
+                "metadata": null,
+                "position": 8126464
+              },
+              "Number": {
+                "type": "integer",
+                "key": "Number",
+                "field_type": "integer",
+                "label": "Number",
+                "display_type": "number",
+                "metadata": null,
+                "position": 8257536
+              },
+              "Link": {
+                "type": "string",
+                "key": "Link",
+                "field_type": "string",
+                "label": "Link",
+                "display_type": "link",
+                "metadata": null,
+                "position": 8323072
+              },
+              "Image": {
+                "type": "string",
+                "key": "Image",
+                "field_type": "string",
+                "label": "Image",
+                "display_type": "image",
+                "metadata": null,
+                "position": 8355840
+              },
+              "Money": {
+                "type": "string",
+                "key": "Money",
+                "field_type": "string",
+                "label": "Money",
+                "display_type": "money",
+                "metadata": null,
+                "position": 8372224
+              },
+              "Progress": {
+                "type": "string",
+                "key": "Progress",
+                "field_type": "string",
+                "label": "Progress",
+                "display_type": "progress",
+                "metadata": {
+                  "steps": 100,
+                  "max_value": 100,
+                  "min_value": 1
+                },
+                "position": 8380416
+              },
+              "File": {
+                "type": "file",
+                "key": "File",
+                "field_type": "file",
+                "label": "File",
+                "display_type": "file",
+                "metadata": null,
+                "position": 8384512
+              },
+              "Status": {
+                "type": "string",
+                "key": "Status",
+                "field_type": "string",
+                "label": "Status",
+                "display_type": "status",
+                "metadata": {
+                  "statuses": [
+                    {
+                      "text": "good"
+                    },
+                    {
+                      "text": "bad"
+                    },
+                    {
+                      "text": "mkay"
+                    },
+                    {
+                      "text": ""
+                    }
+                  ]
+                },
+                "position": 8386560
+              },
+              "Phone_number": {
+                "type": "string",
+                "key": "Phone_number",
+                "field_type": "string",
+                "label": "Phone number",
+                "display_type": "phonenumber",
+                "metadata": null,
+                "position": 8387584
+              },
+              "Email": {
+                "type": "string",
+                "key": "Email",
+                "field_type": "string",
+                "label": "Email",
+                "display_type": "email",
+                "metadata": null,
+                "position": 8388096
+              },
+              "id": {
+                "type": "string",
+                "identity": true,
+                "key": "id",
+                "field_type": "string",
+                "label": null,
+                "display_type": null,
+                "metadata": null,
+                "position": null
+              }
+            }
+          }
+        }
+      }
+    },
+    "collections": [
+      {
+        "name": "TestResource",
+        "title": {
+          "plural": "TestResources",
+          "singular": "TestResource"
+        },
+        "description": null,
+        "uid": "data.TestResource",
+        "listField": "Text",
+        "titleField": "Text",
+        "sortFields": [
+          {
+            "key": "Text",
+            "title": "Text"
+          },
+          {
+            "key": "Long_text",
+            "title": "Long text"
+          },
+          {
+            "key": "Date",
+            "title": "Date"
+          },
+          {
+            "key": "Relationship_onetoone",
+            "title": "Relationship (one-to-one)"
+          },
+          {
+            "key": "Multi_relation_onetomany",
+            "title": "Multi relation (one-to-many)"
+          },
+          {
+            "key": "User",
+            "title": "User"
+          },
+          {
+            "key": "Number",
+            "title": "Number"
+          },
+          {
+            "key": "Link",
+            "title": "Link"
+          },
+          {
+            "key": "Image",
+            "title": "Image"
+          },
+          {
+            "key": "Money",
+            "title": "Money"
+          },
+          {
+            "key": "Progress",
+            "title": "Progress"
+          },
+          {
+            "key": "File",
+            "title": "File"
+          },
+          {
+            "key": "Status",
+            "title": "Status"
+          },
+          {
+            "key": "Phone_number",
+            "title": "Phone number"
+          },
+          {
+            "key": "Email",
+            "title": "Email"
+          }
+        ],
+        "filterFields": [
+          {
+            "key": "appgyver_owner_id",
+            "title": "Owner",
+            "options": [
+              {
+                "name": "demo",
+                "id": 31024
+              }
+            ]
+          }
+        ],
+        "fields": [
+          {
+            "type": "string",
+            "key": "Text",
+            "field_type": "string",
+            "label": "Text",
+            "display_type": "string",
+            "metadata": null,
+            "position": 0
+          },
+          {
+            "type": "text",
+            "key": "Long_text",
+            "field_type": "text",
+            "label": "Long text",
+            "display_type": "text",
+            "metadata": null,
+            "position": 4194304
+          },
+          {
+            "type": "string",
+            "key": "Date",
+            "field_type": "string",
+            "label": "Date",
+            "display_type": "date",
+            "metadata": {
+              "format": "DD-MM-YYYY"
+            },
+            "position": 6291456
+          },
+          {
+            "type": "string",
+            "key": "Relationship_onetoone",
+            "field_type": "string",
+            "label": "Relationship (one-to-one)",
+            "display_type": "relation",
+            "metadata": {
+              "collection": "TestResource",
+              "collection_field": "Text"
+            },
+            "position": 7340032
+          },
+          {
+            "type": "string",
+            "key": "Multi_relation_onetomany",
+            "field_type": "string",
+            "label": "Multi relation (one-to-many)",
+            "display_type": "multirelation",
+            "metadata": {
+              "collection": "TestResource",
+              "collection_field": "Text"
+            },
+            "position": 7864320
+          },
+          {
+            "type": "string",
+            "key": "User",
+            "field_type": "string",
+            "label": "User",
+            "display_type": "user",
+            "metadata": null,
+            "position": 8126464
+          },
+          {
+            "type": "integer",
+            "key": "Number",
+            "field_type": "integer",
+            "label": "Number",
+            "display_type": "number",
+            "metadata": null,
+            "position": 8257536
+          },
+          {
+            "type": "string",
+            "key": "Link",
+            "field_type": "string",
+            "label": "Link",
+            "display_type": "link",
+            "metadata": null,
+            "position": 8323072
+          },
+          {
+            "type": "string",
+            "key": "Image",
+            "field_type": "string",
+            "label": "Image",
+            "display_type": "image",
+            "metadata": null,
+            "position": 8355840
+          },
+          {
+            "type": "string",
+            "key": "Money",
+            "field_type": "string",
+            "label": "Money",
+            "display_type": "money",
+            "metadata": null,
+            "position": 8372224
+          },
+          {
+            "type": "string",
+            "key": "Progress",
+            "field_type": "string",
+            "label": "Progress",
+            "display_type": "progress",
+            "metadata": {
+              "steps": 100,
+              "max_value": 100,
+              "min_value": 1
+            },
+            "position": 8380416
+          },
+          {
+            "type": "file",
+            "key": "File",
+            "field_type": "file",
+            "label": "File",
+            "display_type": "file",
+            "metadata": null,
+            "position": 8384512
+          },
+          {
+            "type": "string",
+            "key": "Status",
+            "field_type": "string",
+            "label": "Status",
+            "display_type": "status",
+            "metadata": {
+              "statuses": [
+                {
+                  "text": "good"
+                },
+                {
+                  "text": "bad"
+                },
+                {
+                  "text": "mkay"
+                },
+                {
+                  "text": ""
+                }
+              ]
+            },
+            "position": 8386560
+          },
+          {
+            "type": "string",
+            "key": "Phone_number",
+            "field_type": "string",
+            "label": "Phone number",
+            "display_type": "phonenumber",
+            "metadata": null,
+            "position": 8387584
+          },
+          {
+            "type": "string",
+            "key": "Email",
+            "field_type": "string",
+            "label": "Email",
+            "display_type": "email",
+            "metadata": null,
+            "position": 8388096
+          }
+        ],
+        "created_by": "user"
+      }
+    ]
+  }
+}
