@@ -16,4 +16,6 @@ class Window
     body:
       querySelectorAll: -> []
 
+  postMessage: ->
+
 module.exports = Window
