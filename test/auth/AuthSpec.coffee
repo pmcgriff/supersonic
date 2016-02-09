@@ -88,7 +88,7 @@ describe 'supersonic.auth', ->
             Number: 42
             Link: "www.appgyver.com"
             # Image: ???
-            # Money: ???
+            Money: 99.99
             Progress: 50
             # File: ???
             Status: "good"
