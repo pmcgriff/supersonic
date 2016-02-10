@@ -15,7 +15,7 @@ module.exports = (localStorage) ->
       @storage.getItem @RAW_SESSION_KEY
 
     clear: =>
-      debug "Clearing session data", rawSession
+      debug "Clearing session data"
       @storage.removeItem @RAW_SESSION_KEY
 
     getAccessToken: =>
