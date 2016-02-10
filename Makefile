@@ -4,7 +4,6 @@ connect-test-app:
 		steroids connect \
 			--watch=../src \
 			--no-qrcode \
-			--livereload \
 			--simulate)
 
 connect-test-spec-app:
@@ -12,5 +11,4 @@ connect-test-spec-app:
 		steroids connect \
 			--watch=../src \
 			--no-qrcode \
-			--livereload \
 			--simulate)
