@@ -2,7 +2,8 @@ Promise = require 'bluebird'
 Bacon = require 'baconjs'
 
 module.exports =
-  deviceready: if document?
+  deviceready:
+    if document?
       new Promise (resolve) ->
         document.addEventListener 'deviceready', resolve
     else
