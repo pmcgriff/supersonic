@@ -69,7 +69,7 @@ The scaffolded code appears under the app directory of the application project. 
 
 <img class="tutorial-image" src="/img/guides/data_scaffolded.png">
 
-See [the Supersonic Architecture guide](http://localhost:4000/supersonic/guides/architecture/architecture/) for a in-depth description of the scaffolded CRUD application structure.
+See [the Supersonic Architecture guide](/supersonic/guides/architecture/) for a in-depth description of the scaffolded CRUD application structure.
 
 Once you have the data configured, you can move to the section [accessing data from device](/supersonic/guides/data/accessing-data-from-device/).
 
