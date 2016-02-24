@@ -2,6 +2,12 @@
 
 Issues are tracked in AppGyver's [unified issue tracker](https://github.com/appgyver/steroids/issues) – please post bug reports and feature requests there.
 
+## 1.10.0 (2016-02-24)
+
+Features:
+
+- `supersonic.data.Model` now supports Composer 2 record-level ACL.
+
 ## 1.9.9 (2016-02-03)
 
 Features:
