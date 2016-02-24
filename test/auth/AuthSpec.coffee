@@ -44,7 +44,7 @@ describe 'supersonic.auth', ->
   describe 'with session data from a production environment', ->
     it 'has a valid user id', ->
       beLoggedIn.then ->
-        data.session.getUserId().should.eq 31024
+        data.session.getUserId().should.be.above 1
 
     it 'has a valid access token', ->
       beLoggedIn.then ->
@@ -110,18 +110,21 @@ describe 'supersonic.auth', ->
             things.should.have.length 1
 
         describe 'selecting the first record', ->
-          foundOne = null
+          foundOneId = null
           beforeEach ->
-            foundOne = foundAll.get 0 #first
+            foundOneId = foundAll.get 0 #first
             .get 'id'
-            .then data.model('TestResource').find
 
           it 'finds a single record', ->
-            foundOne.then (thing)->
+            foundOneId
+            .then data.model('TestResource').find
+            .then (thing)->
               thing.Text.should.eq 'Test1'
 
           it 'updates a single found record', ->
-            foundOne.then (thing)->
+            foundOneId
+            .then data.model('TestResource').find
+            .then (thing)->
               thing.Text = 'Test2'
               thing.save()
               .tap ->
@@ -131,3 +134,17 @@ describe 'supersonic.auth', ->
               .then (updatedThing)->
                 updatedThing
                 updatedThing.Text.should.eq 'Test2'
+
+          it 'finds a single record without ACL by default', ->
+            foundOneId
+            .then data.model('TestResource').find
+            .then (thing)->
+              thing.should.have.property 'acl'
+              expect(thing.acl).to.be.undefined
+
+          it 'finds a single record with ACL included', ->
+            foundOneId.then (id)->
+              data.model('TestResource').find id, include_acl: true
+            .then (thing)->
+              thing.should.have.property 'acl'
+              thing.acl.should.not.be.empty

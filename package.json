@@ -69,7 +69,7 @@
     }
   },
   "dependencies": {
-    "ag-data": "0.16.3",
+    "ag-data": "1.0.0",
     "ag-types": "^0.3.1",
     "baconjs": "0.7.83",
     "bluebird": "2.9.14",
