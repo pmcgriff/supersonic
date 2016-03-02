@@ -42,7 +42,7 @@ module.exports =
         defaultState: document.visibilityState
       else
         changes: Bacon.once target: visibilitystate: 'visible'
-        defaultState: 'hidden'
+        defaultState: 'visible'
 
     visibilityState.changes
       .map((event) ->
