@@ -38,6 +38,9 @@ beLoggedIn = login.then (sessionData)->
   data.session.set sessionData
 # .then data.users.getCurrentUser
 
+getTestModel = ->
+  data.model('TestResource')
+
 describe 'supersonic.auth', ->
   @timeout 10000
 
@@ -61,7 +64,7 @@ describe 'supersonic.auth', ->
       foundAll = null
       deletedAll = null
       beforeEach ->
-        foundAll = beLoggedIn.then data.model('TestResource').findAll
+        foundAll = beLoggedIn.then getTestModel().findAll
 
       it 'deletes everything initially', (done)->
         deletedAll = foundAll.then (things)->
@@ -69,13 +72,13 @@ describe 'supersonic.auth', ->
         .then -> done()
 
       it 'has no data after deleting everything', (done)->
-        deletedAll.then data.model('TestResource').findAll
+        deletedAll.then getTestModel().findAll
         .tap (things)->
           things.should.be.empty
         .then -> done()
 
     describe 'with a new record', ->
-      beReadyToCreate = beLoggedIn.then -> data.model('TestResource')
+      beReadyToCreate = beLoggedIn.then getTestModel
       createdOne = null
 
       it 'creates a record successfully', ->
@@ -102,7 +105,7 @@ describe 'supersonic.auth', ->
       describe 'finding some records', ->
         foundAll = null
         beforeEach ->
-          foundAll = createdOne.then data.model('TestResource').findAll
+          foundAll = createdOne.then getTestModel().findAll
 
         it 'finds a collection of records', ->
           foundAll.then (things)->
@@ -117,34 +120,121 @@ describe 'supersonic.auth', ->
 
           it 'finds a single record', ->
             foundOneId
-            .then data.model('TestResource').find
+            .then getTestModel().find
             .then (thing)->
               thing.Text.should.eq 'Test1'
 
           it 'updates a single found record', ->
             foundOneId
-            .then data.model('TestResource').find
+            .then getTestModel().find
             .then (thing)->
               thing.Text = 'Test2'
               thing.save()
               .tap ->
                 thing.__dirty.should.be.falsy
               .get 'id'
-              .then data.model('TestResource').find
+              .then getTestModel().find
               .then (updatedThing)->
                 updatedThing
                 updatedThing.Text.should.eq 'Test2'
 
           it 'finds a single record without ACL by default', ->
             foundOneId
-            .then data.model('TestResource').find
+            .then getTestModel().find
             .then (thing)->
               thing.should.have.property 'acl'
               expect(thing.acl).to.be.undefined
 
           it 'finds a single record with ACL included', ->
             foundOneId.then (id)->
-              data.model('TestResource').find id, include_acl: true
+              getTestModel().find id, include_acl: true
             .then (thing)->
               thing.should.have.property 'acl'
               thing.acl.should.not.be.empty
+
+          describe "and updating the ACL", ->
+
+            it 'updates a single records ACL', ->
+              foundOneId.then (id)->
+                getTestModel().find id, include_acl: true
+              .then (thing)->
+                aclRuleForUser = thing.acl[0]
+                aclRuleForUser.remove.should.eq "true"
+                aclRuleForUser.remove = "false"
+                thing.save()
+                .tap (savedThing)->
+                  savedThing.acl.should.not.be.empty
+                  savedThing.acl.length.should.eq 1
+                  aclRuleForUser = savedThing.acl[0]
+                  aclRuleForUser.read.should.eq "true"
+                  aclRuleForUser.remove.should.eq "false"
+                .then (savedThing)->
+                  getTestModel().find savedThing.id, include_acl: true
+                .then (updatedThing)->
+                  updatedThing.should.have.property 'acl'
+                  updatedThing.acl.should.not.be.empty
+                  updatedThing.acl.length.should.eq 1
+                  aclRuleForUser = updatedThing.acl[0]
+                  aclRuleForUser.read.should.eq "true"
+                  aclRuleForUser.remove.should.eq "false"
+
+            it 'replaces a single records ACL', ->
+              foundOneId.then (id)->
+                getTestModel().find id, include_acl: true
+              .then (thing)->
+                thing.acl.should.not.be.empty
+                thing.acl.length.should.eq 1
+                thing.acl = []
+                thing.acl.should.be.empty
+                thing.save()
+                .tap (savedThing)->
+                  savedThing.acl.should.be.empty
+                  savedThing.acl.length.should.eq 0
+                .then (savedThing)->
+                  getTestModel().find savedThing.id, include_acl: true
+                .then (updatedThing)->
+                  updatedThing.should.have.property 'acl'
+                  expect(updatedThing.acl).to.be.null
+
+            it 'replaces a single records ACL with a new ACL rule', ->
+              foundOneId.then (id)->
+                getTestModel().find id, include_acl: true
+              .then (thing)->
+                expect(thing.acl).to.be.null
+                thing.acl = [{something_invalid: true}]
+                thing.acl.should.not.be.empty
+                thing.save()
+                .tap (savedThing)->
+                  thing.acl.should.not.be.empty
+                  savedThing.acl.length.should.eq 1
+                  savedThing.acl[0].something_invalid.should.be.truthy
+                .then (savedThing)->
+                  getTestModel().find savedThing.id, include_acl: true
+                .then (updatedThing)->
+                  updatedThing.should.have.property 'acl'
+                  updatedThing.acl.length.should.eq 1
+                  updatedThing.acl[0].something_invalid.should.be.truthy
+
+
+        describe 'selecting the first record with one()', ->
+          foundOneId = null
+          beforeEach ->
+            foundOneId = foundAll.get 0 #first
+            .get 'id'
+
+          it 'listens for changes in a single record with ACL', (done)->
+            foundOneId
+            .tap (id)->
+              options =
+                interval: 100
+                query:
+                  include_acl: true
+
+              success = (thing)->
+                thing.Text.should.eq 'Test2'
+                thing.should.have.property 'acl'
+                thing.acl.should.not.be.empty
+                thing.acl.length.should.eq 1
+                done()
+
+              getTestModel().one(id, options).whenChanged success, done
