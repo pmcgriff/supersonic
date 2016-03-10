@@ -159,15 +159,15 @@ describe 'supersonic.auth', ->
                 getTestModel().find id, include_acl: true
               .then (thing)->
                 aclRuleForUser = thing.acl[0]
-                aclRuleForUser.remove.should.eq "true"
-                aclRuleForUser.remove = "false"
+                aclRuleForUser.remove.should.be.true
+                aclRuleForUser.remove = false
                 thing.save()
                 .tap (savedThing)->
                   savedThing.acl.should.not.be.empty
                   savedThing.acl.length.should.eq 1
                   aclRuleForUser = savedThing.acl[0]
-                  aclRuleForUser.read.should.eq "true"
-                  aclRuleForUser.remove.should.eq "false"
+                  aclRuleForUser.read.should.be.true
+                  aclRuleForUser.remove.should.be.false
                 .then (savedThing)->
                   getTestModel().find savedThing.id, include_acl: true
                 .then (updatedThing)->
@@ -175,8 +175,8 @@ describe 'supersonic.auth', ->
                   updatedThing.acl.should.not.be.empty
                   updatedThing.acl.length.should.eq 1
                   aclRuleForUser = updatedThing.acl[0]
-                  aclRuleForUser.read.should.eq "true"
-                  aclRuleForUser.remove.should.eq "false"
+                  aclRuleForUser.read.should.be.true
+                  aclRuleForUser.remove.should.be.false
 
             it 'replaces a single records ACL', ->
               foundOneId.then (id)->
