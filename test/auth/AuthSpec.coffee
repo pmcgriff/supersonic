@@ -152,6 +152,15 @@ describe 'supersonic.auth', ->
               thing.should.have.property 'acl'
               thing.acl.should.not.be.empty
 
+          describe "with pre-calculated ACL", ->
+            it 'finds a single record with current users current access level included by default', ->
+              foundOneId
+              .then getTestModel().find
+              .then (thing)->
+                thing.should.have.property 'recordPermissionsForCurrentUser'
+                thing.recordPermissionsForCurrentUser.should.not.be.empty
+                thing.recordPermissionsForCurrentUser.read.should.be.true
+
           describe "and updating the ACL", ->
 
             it 'updates a single records ACL', ->
