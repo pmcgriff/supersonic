@@ -22,6 +22,8 @@ angular
 
     $scope.upload = ->
       supersonic.logger.log "About to start upload"
+      $scope.record.file.uploadJpgQuality = 5
+      $scope.record.file.uploadMaxWidth = 50
       $scope.uploading = true
       $scope.record.save().then (uploaded) ->
         $scope.$apply ->
