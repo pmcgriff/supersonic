@@ -7,6 +7,7 @@ describe "supersonic.ui.drawers", ->
   it "should be able to use a started view", ->
     receivedMessage = new Promise (resolve) ->
       listener = (e) ->
+        return if e.data == "process-tick"
         window.removeEventListener "message", listener
         resolve e.data
       window.addEventListener "message", listener
@@ -29,6 +30,7 @@ describe "supersonic.ui.drawers", ->
     it "should be able to init right drawer", ->
       receivedMessage = new Promise (resolve) ->
         listener = (e) ->
+          return if e.data == "process-tick"
           supersonic.logger.log "Received message: #{JSON.stringify(e.data)}"
           window.removeEventListener "message", listener
           resolve e.data
@@ -43,6 +45,7 @@ describe "supersonic.ui.drawers", ->
     it "should be able to init left drawer", ->
       receivedMessage = new Promise (resolve) ->
         listener = (e) ->
+          return if e.data == "process-tick"
           window.removeEventListener "message", listener
           resolve e.data
         window.addEventListener "message", listener

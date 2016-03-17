@@ -1,4 +1,6 @@
 describe "supersonic.ui.dialog.prompt", ->
+  @timeout 10000
+
   it "should be defined", ->
     supersonic.ui.dialog.prompt.should.exist
 

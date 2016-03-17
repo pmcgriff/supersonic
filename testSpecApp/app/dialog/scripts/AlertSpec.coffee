@@ -4,6 +4,8 @@ dismissNextAlert = ->
       buttonIndex: 0
 
 describe "supersonic.ui.dialog.alert", ->
+  @timeout 10000
+
   it "should be defined", ->
     supersonic.ui.dialog.alert.should.exist
 

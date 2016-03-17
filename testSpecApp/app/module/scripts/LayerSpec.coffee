@@ -54,7 +54,7 @@ describe 'supersonic.module.layers', ->
         .then(waitForLayerChange)
         .should.be.fulfilled
 
-    it 'supports module attribute passing', ->
+    xit 'supports module attribute passing', ->
       foo = "foo-#{Math.random()}"
       fooReply = new Promise (resolve) ->
         supersonic.data.channel('expecting-value-from-foo')
@@ -70,7 +70,7 @@ describe 'supersonic.module.layers', ->
         .tap(waitForLayerChange)
         .should.eventually.equal foo
 
-    it 'supports module attribute passing with required attributes', ->
+    xit 'supports module attribute passing with required attributes', ->
       foo = "foo-#{Math.random()}"
       fooReply = new Promise (resolve) ->
         supersonic.data.channel('expecting-value-from-foo')

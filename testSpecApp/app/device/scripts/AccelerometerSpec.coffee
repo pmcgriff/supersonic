@@ -34,24 +34,24 @@ describe "supersonic.device.accelerometer", ->
       supersonic.device.accelerometer.getAcceleration.should.be.defined
       supersonic.device.accelerometer.getAcceleration.should.be.a "function"
 
-    it "should resolve to a proper Acceleration object", (done) ->
+    xit "should resolve to a proper Acceleration object", (done) ->
       supersonic.device.accelerometer.getAcceleration().then (a) ->
         checkAccelerationObject(a)
         done()
 
-    it "the Acceleration object should have (reasonable) values for x, y and z expressed in m/s^2", (done) ->
+    xit "the Acceleration object should have (reasonable) values for x, y and z expressed in m/s^2", (done) ->
       supersonic.device.accelerometer.getAcceleration().then (a) ->
         checkReasonableValues(a)
         done()
 
-    it "the Acceleration object should return a recent timestamp", (done) ->
+    xit "the Acceleration object should return a recent timestamp", (done) ->
       supersonic.device.accelerometer.getAcceleration().then (a) ->
         checkRecentTimestamp(a)
         done()
 
     describe "callbacks", ->
 
-      it "should call onSuccess", (done) ->
+      xit "should call onSuccess", (done) ->
         supersonic.device.accelerometer.getAcceleration
           onSuccess: ->
             done()
@@ -61,24 +61,24 @@ describe "supersonic.device.accelerometer", ->
       supersonic.device.accelerometer.watchAcceleration.should.be.defined
       supersonic.device.accelerometer.watchAcceleration.should.be.a "function"
 
-    it "should return a stream of Acceleration objects", (done) ->
+    xit "should return a stream of Acceleration objects", (done) ->
       supersonic.device.accelerometer.watchAcceleration().onValue (a) ->
         checkAccelerationObject(a)
         done()
 
-    it "should have (reasonable) values for x, y and z expressed in m/s^2", (done) ->
+    xit "should have (reasonable) values for x, y and z expressed in m/s^2", (done) ->
       supersonic.device.accelerometer.watchAcceleration().onValue (a) ->
         checkReasonableValues(a)
         done()
 
-    it "the Acceleration object should return a recent timestamp", (done) ->
+    xit "the Acceleration object should return a recent timestamp", (done) ->
       supersonic.device.accelerometer.watchAcceleration().onValue (a) ->
         checkRecentTimestamp(a)
         done()
 
     describe "callbacks", ->
 
-      it "should call onSuccess", (done) ->
+      xit "should call onSuccess", (done) ->
         supersonic.device.accelerometer.watchAcceleration
           onSuccess: ->
             done()

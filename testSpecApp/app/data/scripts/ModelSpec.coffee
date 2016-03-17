@@ -21,7 +21,7 @@ FileFixture = do ->
 
 describe "supersonic.data.model", ->
   before ->
-    supersonic.data.session.clear()
+    supersonic.auth.session.clear()
 
   it "is a function", ->
     supersonic.data.model.should.be.a 'function'
@@ -80,7 +80,7 @@ describe "supersonic.data.model", ->
 
   describe "with a remote resource", ->
     describe "findAll", ->
-      it "should be able to retrieve a collection", ->
+      xit "should be able to retrieve a collection", ->
         @timeout 5000
 
         supersonic.data.model('BuiltIOTask', {
@@ -110,7 +110,7 @@ describe "supersonic.data.model", ->
         record.delete()
 
     describe "create", ->
-      it "should handle a file upload", ->
+      xit "should handle a file upload", ->
         @timeout 5000
         recordCreated = supersonic.data.model('SandboxFileResource').create({
           description: 'supersonic.data.model.create test object'
@@ -131,7 +131,7 @@ describe "supersonic.data.model", ->
 
     describe "update", ->
 
-      it "should handle a file upload", ->
+      xit "should handle a file upload", ->
         # TODO: Configure from cloud
         throw new Error """
           Needs reconfiguration in the cloud.

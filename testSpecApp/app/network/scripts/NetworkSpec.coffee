@@ -6,7 +6,7 @@ describe "CORS request", ->
 
     xhr.onload = ->
       titleText = xhr.responseText.match("<title>(.*)?</title>")[1]
-      titleText.should.equal "AppGyver"
+      titleText.should.match /AppGyver/
       done()
 
     xhr.onerror = ->

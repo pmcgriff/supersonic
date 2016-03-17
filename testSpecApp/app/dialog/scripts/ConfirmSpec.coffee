@@ -1,4 +1,6 @@
 describe "supersonic.ui.dialog.confirm", ->
+  @timeout 10000
+
   it "should be defined", ->
     supersonic.ui.dialog.confirm.should.exist
 

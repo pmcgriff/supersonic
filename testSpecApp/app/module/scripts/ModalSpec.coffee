@@ -33,14 +33,14 @@ describe 'supersonic.module.modal', ->
 
   describe 'navigation between views', ->
 
-    it 'can show a view matching a given route and can hide it afterwards', ->
+    xit 'can show a view matching a given route and can hide it afterwards', ->
       supersonic.module.modal.show('foo')
         .then(waitForModalShow)
         .then(supersonic.module.modal.hide)
         .then(waitForModalHide)
         .should.be.fulfilled
 
-    it 'works with an installed module', ->
+    xit 'works with an installed module', ->
       supersonic.module.modal.show('com.appgyver.install-test')
         .then(waitForModalShow)
         .then(supersonic.module.modal.hide)

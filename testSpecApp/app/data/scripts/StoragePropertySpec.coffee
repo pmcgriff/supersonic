@@ -8,7 +8,7 @@ describe "supersonic.data.storage.property", ->
 
   afterEach ->
     supersonic.data.storage.property(propertyName).unset?()
-  
+
   it "is a function", ->
     supersonic.data.storage.property.should.be.a 'function'
 
@@ -54,7 +54,7 @@ describe "supersonic.data.storage.property", ->
       left.set('foobar')
       right.get().should.equal 'foobar'
 
-    it "is shared between web views", ->
+    xit "is shared between web views", ->
       value = Math.random()
       supersonic.data.storage.property(propertyName).set(value)
 

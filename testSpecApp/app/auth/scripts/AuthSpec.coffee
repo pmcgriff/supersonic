@@ -8,12 +8,12 @@ describe "supersonic.auth", ->
       supersonic.auth.should.have.property('users')
 
     describe "findAll()", ->
-      it "should return at least one user", ->
+      xit "should return at least one user", ->
         supersonic.auth.users.findAll().then (users) ->
           users.length.should.be.greaterThan 0
 
     describe "getCurrentUser()", ->
-      it "should return a user", ->
+      xit "should return a user", ->
         supersonic.auth.users.getCurrentUser().then (user) ->
           user.should.have.property('username')
 
