@@ -8,6 +8,7 @@ module.exports = (steroids, log, global) ->
   parameterBus = new Bacon.Bus
 
   viewObject = {
+    paramsBus: parameterBus
     params: parameterBus.toProperty(steroids?.view?.params)
     id: null
   }
