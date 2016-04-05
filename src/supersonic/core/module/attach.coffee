@@ -8,6 +8,7 @@ class Attach
 
 module.exports = (attributesFactory) ->
   (element) ->
-    attributes = attributesFactory()
-    instance = new Attach(element, {attributes})
-    return instance.namespace
+    ->
+      attributes = attributesFactory()
+      instance = new Attach(element, {attributes})
+      return instance.namespace

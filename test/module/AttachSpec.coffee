@@ -34,8 +34,8 @@ describe "attach", ->
     attached2 = null
 
     before ->
-      attached = attach node
-      attached2 = attach node2
+      attached = attach(node)()
+      attached2 = attach(node2)()
 
     describe ".attributes", ->
       attrs = null
