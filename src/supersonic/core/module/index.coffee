@@ -1,6 +1,10 @@
 
 module.exports = (steroids, logger, superglobal, ui, env, global, data) ->
-  attributes = require('./attributes')(logger, global)
+  attributes = require('./attributes')
+
+  attributesFactory = ->
+    attributes(logger, global)
+
   router = require('./router')(logger, env, global)
   drivers = require('./drivers')(steroids, superglobal, global)
 
@@ -15,7 +19,8 @@ module.exports = (steroids, logger, superglobal, ui, env, global, data) ->
     router
     drivers
     cordovaSupport
-    attributes
+    attributes: attributes(logger, global)
+    attach: require('./attach')(attributesFactory)
     tabset: require('./tabset')(global)
     iframes: require('./iframes')(global, superglobal)
     layers: require('./layers')(logger, router, drivers.current.get, global)
