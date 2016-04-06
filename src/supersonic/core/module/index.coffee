@@ -25,6 +25,6 @@ module.exports = (steroids, logger, superglobal, ui, env, global, data) ->
     iframes: require('./iframes')(global, superglobal)
     layers: require('./layers')(logger, router, drivers.current.get, global)
     modal: require('./modal')(logger, router, drivers.current.get, global)
-    notifications: require('./notifications')(data, attributes, data.session)
+    notifications: require('./notifications')(data, attributesFactory(), data.session)
     transitions: require('./transitions')(steroids, ui, logger)
   }
