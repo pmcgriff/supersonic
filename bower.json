@@ -21,6 +21,6 @@
   ],
   "dependencies": {
     "webcomponentsjs": "0.7.12",
-    "steroids-js": "^3.5.15"
+    "steroids-js": "^3.5.20"
   }
 }
