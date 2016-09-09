@@ -2,6 +2,12 @@
 
 Issues are tracked in AppGyver's [unified issue tracker](https://github.com/appgyver/steroids/issues) – please post bug reports and feature requests there.
 
+## 1.13.2 (2016-09-09)
+
+Changes:
+
+- Utilize webcomponents.js version 0.7.22 and `webcomponents-lite.js` to circumvent iOS 10 issues with native shadow DOM.
+
 ## 1.10.0 (2016-02-24)
 
 Features:
