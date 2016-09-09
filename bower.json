@@ -20,7 +20,7 @@
   "ignore": [
   ],
   "dependencies": {
-    "webcomponentsjs": "0.7.12",
+    "webcomponentsjs": "0.7.22",
     "steroids-js": "^3.5.20"
   }
 }

@@ -10,7 +10,7 @@
     "chai": "^1.9.1",
     "angular-mocks": "1.2.26",
     "bluebird": "~2.3.11",
-    "webcomponentsjs": "0.7.12",
+    "webcomponentsjs": "0.7.22",
     "bacon": "~0.7.30"
   }
 }

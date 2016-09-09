@@ -7,6 +7,6 @@
     "angular": "1.2.16",
     "steroids-data": "~3.5.9",
     "handlebars": "~2.0.0",
-    "webcomponentsjs": "0.7.12"
+    "webcomponentsjs": "0.7.22"
   }
 }
