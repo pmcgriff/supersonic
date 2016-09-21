@@ -4,6 +4,8 @@ Issues are tracked in AppGyver's [unified issue tracker](https://github.com/appg
 
 ## 1.13.2 (2016-09-09)
 
+Fixes issue where splashscreen would no longer autohide on iOS 10. To fix the issue for existing apps, upgrade Supersonic to v1.13.2 or newer (with `bower update`). Then, in the app's layout file, modify the `<script>` tag that loads `webcomponents.js` to load `webcomponents-lite.js` instead.
+
 Changes:
 
 - Utilize webcomponents.js version 0.7.22 and `webcomponents-lite.js` to circumvent iOS 10 issues with native shadow DOM.
