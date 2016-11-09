@@ -2,6 +2,14 @@
 
 Issues are tracked in AppGyver's [unified issue tracker](https://github.com/appgyver/steroids/issues) – please post bug reports and feature requests there.
 
+## 1.14.0 (2016-11-09)
+
+`supersonic.data.Model` find queries are now completely cached, just like findAll queries.
+
+Changes:
+
+- Updates ag-data to 1.2.0
+
 ## 1.13.2 (2016-09-09)
 
 Fixes issue where splashscreen would no longer autohide on iOS 10. To fix the issue for existing apps, upgrade Supersonic to v1.13.2 or newer (with `bower update`). Then, in the app's layout file, modify the `<script>` tag that loads `webcomponents.js` to load `webcomponents-lite.js` instead.
