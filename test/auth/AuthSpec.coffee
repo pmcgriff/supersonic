@@ -18,6 +18,24 @@ logger = require('../../src/supersonic/core/logger')(steroids, global)
 env = require('../../src/supersonic/core/env')(logger, global)
 data = require('../../src/supersonic/core/data')(logger, global, env)
 
+mockCacheStorage = ->
+  storage = {}
+
+  getItem: (key) ->
+    Promise.try ->
+      storage[key]
+  setItem: (key, value) ->
+    Promise.try ->
+      storage[key] = value
+  removeItem: (key) ->
+    Promise.try ->
+      delete storage[key]
+  keys: ->
+    Promise.try ->
+      Object.keys storage
+
+  backend: storage
+
 login = new Promise (resolve, reject) ->
   request.post env.auth.endpoint + "/session"
     .send
@@ -39,7 +57,8 @@ beLoggedIn = login.then (sessionData)->
 # .then data.users.getCurrentUser
 
 getTestModel = ->
-  data.model('TestResource')
+  # Do not use localstorage mock since the mock is not 100% equivalent to acual localstorage
+  data.model 'TestResource', cache: storage: mockCacheStorage()
 
 describe 'supersonic.auth', ->
   @timeout 10000
@@ -64,7 +83,7 @@ describe 'supersonic.auth', ->
       foundAll = null
       deletedAll = null
       beforeEach ->
-        foundAll = beLoggedIn.then getTestModel().findAll
+        foundAll = beLoggedIn.then -> getTestModel().findAll()
 
       it 'deletes everything initially', (done)->
         deletedAll = foundAll.then (things)->
@@ -72,7 +91,7 @@ describe 'supersonic.auth', ->
         .then -> done()
 
       it 'has no data after deleting everything', (done)->
-        deletedAll.then getTestModel().findAll
+        deletedAll.then -> getTestModel().findAll()
         .tap (things)->
           things.should.be.empty
         .then -> done()
