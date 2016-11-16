@@ -174,7 +174,8 @@ describe 'supersonic.auth', ->
           describe "with pre-calculated ACL", ->
             it 'finds a single record with current users current access level included by default', ->
               foundOneId
-              .then getTestModel().find
+              .then (id) ->
+                getTestModel().find(id, { include_acl: true })
               .then (thing)->
                 thing.should.have.property 'recordPermissionsForCurrentUser'
                 thing.recordPermissionsForCurrentUser.should.not.be.empty
